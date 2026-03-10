@@ -4,7 +4,7 @@ import { sayWelcome, getInput } from './cli.js'
  * Returns true if given number is even. Returns false if not even.
  * @param {number} number
  */
-export const isEven = number => number % 2 === 0 ? true : false
+export const isEven = number => number % 2 === 0
 
 /**
  * Returns random integer, up to max value.
