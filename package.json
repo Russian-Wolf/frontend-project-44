@@ -1,0 +1,19 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "Brain Games project",
+  "homepage": "https://github.com/Russian-Wolf/frontend-project-44#readme",
+  "bugs": {
+    "url": "https://github.com/Russian-Wolf/frontend-project-44/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Russian-Wolf/frontend-project-44.git"
+  },
+  "license": "ISC",
+  "author": "Russian_Wolf",
+  "type": "module",
+  "bin": {
+  "brain-games": "bin/brain-games.js"
+}
+}
