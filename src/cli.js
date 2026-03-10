@@ -22,4 +22,5 @@ export const sayWelcome = () => {
   console.log('Welcome to the Brain Games!')
   const name = getName()
   console.log(`Hello, ${name}!`)
+  return name
 }
