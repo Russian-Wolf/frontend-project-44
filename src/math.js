@@ -32,3 +32,24 @@ export const getNextSeed = (seed) => {
   const nextSeed = (intSeed * 1664525 + 1013904223) % 2 ** 32
   return nextSeed / 2 ** 32
 }
+
+/**
+ * Get GCD of two integers using Euclidean algorithm.
+ * @param {number} number1
+ * @param {number} number2
+ * @returns {number}
+ */
+export const getGCD = (number1, number2) => {
+  let i = 0
+  const cycleLimit = 1000
+  while (i < cycleLimit) {
+    if (number1 === number2) return number1
+    else if (number1 > number2) {
+      number1 -= number2
+    }
+    else {
+      number2 -= number1
+    }
+    i += 1
+  }
+}
