@@ -6,7 +6,7 @@ import { sayWelcome, getInput } from './cli.js'
  */
 export const playGame = (gameTypeName) => {
   const name = sayWelcome()
-  console.log('Answer "yes" if the number is even, otherwise answer "no".')
+  console.log(gameTypeName.message)
   let wins = 0
   const winText = 'Correct!'
 

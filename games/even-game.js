@@ -17,6 +17,7 @@ export const gameEvenType = {
   maxNum: 1000,
   answerFunc: getAnswerEven,
   questionFunc: getQuestionEven,
+  message: 'Answer "yes" if the number is even, otherwise answer "no".',
 }
 
 export const playGameEven = () => {
