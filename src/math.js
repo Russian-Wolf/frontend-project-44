@@ -53,3 +53,17 @@ export const getGCD = (number1, number2) => {
     i += 1
   }
 }
+
+export const getArithmeticProgressionList = (numItems, initialValue, difference) => {
+  const list = [initialValue]
+  let prevValue = initialValue
+  let nextValue
+
+  for (let i = 1; i < numItems; i += 1) {
+    nextValue = prevValue + difference
+    list.push(nextValue)
+    prevValue = nextValue
+  }
+
+  return list
+}
