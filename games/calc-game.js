@@ -5,12 +5,9 @@ export const getCalcNumbers = (seed, maxNum) => {
   const numbers = []
   const seed2 = getNextSeed(seed)
   const seed3 = getNextSeed(seed2)
-  numbers.push(getNumberFromSeed (seed, maxNum))
-  numbers.push(getNumberFromSeed (seed2, maxNum))
   let number3 = getNumberFromSeed (seed3, 3)
   if (number3 === 3) number3 = 2
-  numbers.push(number3)
-
+  numbers.push(getNumberFromSeed (seed, maxNum), getNumberFromSeed (seed2, maxNum), number3)
   return numbers
 }
 
