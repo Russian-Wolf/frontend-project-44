@@ -21,3 +21,14 @@ export const getRandomInteger = (max) => {
 export const getNumberFromSeed = (seed, max) => {
   return Math.floor(seed * max)
 }
+
+/**
+ * Use LCG to generate another seed.
+ * @param {number} seed
+ * @returns {number}
+ */
+export const getNextSeed = (seed) => {
+  const intSeed = Math.floor(seed * 2 ** 32)
+  const nextSeed = (intSeed * 1664525 + 1013904223) % 2 ** 32
+  return nextSeed / 2 ** 32
+}
