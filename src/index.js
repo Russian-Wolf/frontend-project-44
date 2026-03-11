@@ -17,7 +17,7 @@ export const playGame = (gameTypeName) => {
       wins += 1
     }
     else {
-      const loseText = `${roundResult.answer} is wrong answer ;(. Correct answer was ${roundResult.correctAnswer}.`
+      const loseText = `'${roundResult.answer}' is wrong answer ;(. Correct answer was '${roundResult.correctAnswer}'.`
       console.log(loseText)
       console.log(`Let's try again, ${name}!`)
       return false
