@@ -54,8 +54,10 @@ export const getQuestionProgression = (seed, maxNum) => {
   const numbers = getProgressionNumbers(seed, maxNum)
   const questionStart = numbers.numbersList.slice(0, numbers.hiddenIndex)
   const questionEnd = numbers.numbersList.slice(numbers.hiddenIndex + 1)
-  let question = `${questionStart} .. ${questionEnd}`
-
+  let question = `${questionStart.join(' ')} .. ${questionEnd.join(' ')}`
+  while (question[0] === ' ') {
+    question = question.slice(1)
+  }
   return question
 }
 export const gameProgressionType = {
