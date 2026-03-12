@@ -16,7 +16,7 @@ export const getProgressionNumbers = (seed, maxNum) => {
   let nextSeed
   const maxDiff = 10
   const maxNumberCount = 10
-  const minNumberCount = 5
+  const minNumberCount = 6
 
   for (let i = 1; i < numSeeds; i += 1) {
     nextSeed = getNextSeed(prevSeed)
