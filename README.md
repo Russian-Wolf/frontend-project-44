@@ -1,7 +1,7 @@
 ﻿
 # Brain Games
 
-## Student's project by Russian_Wolf
+## Student's project by *Russian_Wolf*
 
 ## Description
 
@@ -25,7 +25,7 @@ A few games that can be played inside of a terminal. Each game lasts for up to 3
 - Make (optional)
   
 
-## *Installation*
+## Installation
 
 1) Clone project from github. This can be done in multiple ways, use your preferred method.
 
