@@ -37,7 +37,7 @@ export const getProgressionNumbers = (seed, maxNum) => {
   numbers.hiddenIndex = getNumberFromSeed(seeds[4], numbers.numberCount + 1)
 
   if (numbers.numberCount === 11) numbers.numberCount = 10
-  if (numbers.hiddenIndex === 11) numbers.hiddenIndex = 10
+  if (numbers.hiddenIndex > numbers.numberCount - 1) numbers.hiddenIndex = numbers.numberCount - 1
 
   numbers.numbersList = getArithmeticProgressionList(numbers.numberCount, numbers.initValue, numbers.diff)
 
