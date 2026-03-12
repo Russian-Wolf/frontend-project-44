@@ -10,8 +10,15 @@ export const getGCDNumbers = (seed, maxNum) => {
 
 export const getAnswerGCD = (seed, maxNum) => {
   const numbers = getGCDNumbers(seed, maxNum)
-  const answer = getGCD(numbers[0], numbers[1])
-  return answer.toString()
+  let answer = getGCD(numbers[0], numbers[1])
+  try {
+    answer = answer.toString()
+  }
+  catch {
+    console.log(`numbers were: ${numbers}`)
+    console.log(`answer was: ${getGCD(numbers[0], numbers[1])}`)
+  }
+  return answer
 }
 
 export const getQuestionGCD = (seed, maxNum) => {
