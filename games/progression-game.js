@@ -24,20 +24,15 @@ export const getProgressionNumbers = (seed, maxNum) => {
     prevSeed = nextSeed
   }
 
-  // initial value
   numbers.initValue = getNumberFromSeed(seeds[0], maxNum)
 
-  // numbers count
   numbers.numberCount = getNumberFromSeed(seeds[1], maxNumberCount - minNumberCount + 1) + minNumberCount
 
-  // difference sign
   if (seeds[2] < 0.5) diffSign = '-'
 
-  // difference
   numbers.diff = 1 + getNumberFromSeed(seeds[3], maxDiff - 1)
   if (diffSign === '-') numbers.diff = -numbers.diff
 
-  // index of hidden number
   numbers.hiddenIndex = getNumberFromSeed(seeds[4], numbers.numberCount + 1)
 
   if (numbers.numberCount === 11) numbers.numberCount = 10
@@ -50,7 +45,6 @@ export const getProgressionNumbers = (seed, maxNum) => {
 
 export const getAnswerProgression = (seed, maxNum) => {
   const numbers = getProgressionNumbers(seed, maxNum)
-  //   console.log(numbers)
   const answer = numbers.numbersList[numbers.hiddenIndex]
   return answer.toString()
 }
