@@ -41,7 +41,7 @@ export const getNextSeed = (seed) => {
  */
 export const getGCD = (number1, number2) => {
   let i = 0
-  const cycleLimit = 1000
+  const cycleLimit = 10000
   while (i < cycleLimit) {
     if (number1 === number2) return number1
     else if (number1 > number2) {
