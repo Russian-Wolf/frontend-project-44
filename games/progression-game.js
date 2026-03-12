@@ -28,10 +28,11 @@ export const getProgressionNumbers = (seed, maxNum) => {
 
   numbers.numberCount = getNumberFromSeed(seeds[1], maxNumberCount - minNumberCount + 1) + minNumberCount
 
-  if (seeds[2] < 0.5) diffSign = '-'
+  // removed the option of negative progressions due to tests restrictions
+  // if (seeds[2] < 0.5) diffSign = '-'
 
   numbers.diff = 1 + getNumberFromSeed(seeds[3], maxDiff - 1)
-  if (diffSign === '-') numbers.diff = -numbers.diff
+  // if (diffSign === '-') numbers.diff = -numbers.diff
 
   numbers.hiddenIndex = getNumberFromSeed(seeds[4], numbers.numberCount + 1)
 
