@@ -9,7 +9,7 @@ export const getProgressionNumbers = (seed, maxNum) => {
     hiddenIndex: 2,
     numbersList: [],
   }
-  // let diffSign = '+'
+
   const seeds = [seed]
   let prevSeed = seed
   const numSeeds = 5
@@ -28,11 +28,7 @@ export const getProgressionNumbers = (seed, maxNum) => {
 
   numbers.numberCount = getNumberFromSeed(seeds[1], maxNumberCount - minNumberCount + 1) + minNumberCount
 
-  // removed the option of negative progressions due to tests restrictions
-  // if (seeds[2] < 0.5) diffSign = '-'
-
   numbers.diff = 1 + getNumberFromSeed(seeds[3], maxDiff - 1)
-  // if (diffSign === '-') numbers.diff = -numbers.diff
 
   numbers.hiddenIndex = getNumberFromSeed(seeds[4], numbers.numberCount + 1)
 
@@ -55,7 +51,7 @@ export const getQuestionProgression = (seed, maxNum) => {
   const questionStart = numbers.numbersList.slice(0, numbers.hiddenIndex)
   const questionEnd = numbers.numbersList.slice(numbers.hiddenIndex + 1)
   let question = `${questionStart.join(' ')} .. ${questionEnd.join(' ')}`
-  while (question[0] === ' ') {
+  while (question.startsWith(' ')) {
     question = question.slice(1)
   }
   return question
