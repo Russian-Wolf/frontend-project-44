@@ -9,7 +9,7 @@ export const getProgressionNumbers = (seed, maxNum) => {
     hiddenIndex: 2,
     numbersList: [],
   }
-  let diffSign = '+'
+  // let diffSign = '+'
   const seeds = [seed]
   let prevSeed = seed
   const numSeeds = 5
