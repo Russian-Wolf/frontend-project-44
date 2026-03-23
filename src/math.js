@@ -5,32 +5,12 @@
 export const isEven = number => number % 2 === 0
 
 /**
- * Returns random integer, up to max value.
+ * Returns random integer, from min to max value (inclusive).
+ * @param {number} min
  * @param {number} max
  */
-export const getRandomInteger = (max) => {
-  return Math.floor(Math.random() * max)
-}
-
-/**
- * Returns integer given the seed (from 0 to 1), up to max value.
- * @param {number} max
- * @param {number} seed
- * @returns {number}
- */
-export const getNumberFromSeed = (seed, max) => {
-  return Math.floor(seed * max)
-}
-
-/**
- * Use LCG to generate another seed.
- * @param {number} seed
- * @returns {number}
- */
-export const getNextSeed = (seed) => {
-  const intSeed = Math.floor(seed * 2 ** 32)
-  const nextSeed = (intSeed * 1664525 + 1013904223) % 2 ** 32
-  return nextSeed / 2 ** 32
+export const getRandomInteger = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
 /**
@@ -54,6 +34,13 @@ export const getGCD = (number1, number2) => {
   }
 }
 
+/**
+ * Generates a list of numbers that follow arithmetic progression logic.
+ * @param {number} numItems How many numbers to generate.
+ * @param {number} initialValue The first value of the progression.
+ * @param {number} difference Difference between two consecutive numbers.
+ * @returns {[number]} Array of numbers.
+ */
 export const getArithmeticProgressionList = (numItems, initialValue, difference) => {
   const list = [initialValue]
   let prevValue = initialValue
@@ -68,6 +55,11 @@ export const getArithmeticProgressionList = (numItems, initialValue, difference)
   return list
 }
 
+/**
+ * Returns true, if given number is a prime, otherwise returns false.
+ * @param {number} number
+ * @returns {boolean}
+ */
 export const isPrime = (number) => {
   if (number < 2) return false
   if (number === 2) return true

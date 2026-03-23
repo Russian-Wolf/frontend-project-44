@@ -1,23 +1,38 @@
-import { sayWelcome, getInput } from './cli.js'
+import { getName, getInput } from './cli.js'
+
+/**
+ * Plays one round of given game type and returns results of that round.
+ * @param {Object} gameType Game parameters Object.
+ * @returns {Object} Round results Object.
+ */
+const playRound = (gameType) => {
+  const round = gameType.roundFunc()
+  console.log(`Question: ${round.question}`)
+  round.input = getInput('Your answer: ')
+  round.win = round.input === round.answer
+  return round
+}
 
 /**
  * Welcomes the user and plays up to 3 rounds of given game type.
  * @param {Object} gameType
  */
-export const playGame = (gameTypeName) => {
-  const name = sayWelcome()
-  console.log(gameTypeName.message)
+const playGame = (gameType) => {
+  console.log('Welcome to the Brain Games!')
+  const name = getName()
+  console.log(`Hello, ${name}!`)
+  console.log(gameType.message)
   let wins = 0
   const winText = 'Correct!'
 
   while (wins < 3) {
-    let roundResult = playRound(gameTypeName)
+    let roundResult = playRound(gameType)
     if (roundResult.win) {
       console.log(winText)
       wins += 1
     }
     else {
-      const loseText = `'${roundResult.answer}' is wrong answer ;(. Correct answer was '${roundResult.correctAnswer}'.`
+      const loseText = `'${roundResult.input}' is wrong answer ;(. Correct answer was '${roundResult.answer}'.`
       console.log(loseText)
       console.log(`Let's try again, ${name}!`)
       return false
@@ -29,26 +44,4 @@ export const playGame = (gameTypeName) => {
   }
 }
 
-/**
- * Plays one round of given game type and returns results of that round.
- * @param {Object} gameType Game parameters Object.
- * @returns {Object} Round results Object.
- */
-export const playRound = (gameType) => {
-  const roundResult = {
-    win: false,
-    answer: 'Not provided',
-    correctAnswer: 'None',
-  }
-
-  const seed = Math.random()
-  const maxNum = gameType.maxNum
-
-  roundResult.correctAnswer = gameType.answerFunc(seed, maxNum)
-  console.log(`Question: ${gameType.questionFunc(seed, maxNum)}`)
-  roundResult.answer = getInput('Your answer: ')
-
-  roundResult.win = roundResult.answer === roundResult.correctAnswer
-
-  return roundResult
-}
+export default playGame

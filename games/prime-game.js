@@ -1,29 +1,31 @@
-import { getNumberFromSeed, isPrime } from '../src/math.js'
-import { playGame } from '../src/index.js'
+import { getRandomInteger, isPrime } from '../src/math.js'
+import playGame from '../src/index.js'
 
-export const getPrimeGameNumber = (seed, maxNum) => {
-  let number
-  number = getNumberFromSeed(seed, maxNum)
-  return number
+const getRoundPrime = () => {
+  const round = {
+    answer: 'Not generated',
+    question: 'Not generated',
+    input: 'Not provided',
+    win: false,
+  }
+
+  const number = getRandomInteger(gamePrimeType.minNum, gamePrimeType.maxNum)
+
+  round.answer = isPrime(number) ? 'yes' : 'no'
+  round.question = number
+
+  return round
 }
 
-export const getAnswerPrime = (seed, maxNum) => {
-  const number = getPrimeGameNumber(seed, maxNum)
-  const answer = isPrime(number) ? 'yes' : 'no'
-  return answer
-}
-
-export const getQuestionPrime = (seed, maxNum) => {
-  const question = getPrimeGameNumber(seed, maxNum)
-  return question
-}
-export const gamePrimeType = {
+const gamePrimeType = {
+  minNum: 1,
   maxNum: 100,
-  answerFunc: getAnswerPrime,
-  questionFunc: getQuestionPrime,
+  roundFunc: getRoundPrime,
   message: 'Answer "yes" if given number is prime. Otherwise answer "no".',
 }
 
-export const playGamePrime = () => {
+const playGamePrime = () => {
   playGame(gamePrimeType)
 }
+
+export default playGamePrime

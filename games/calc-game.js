@@ -1,58 +1,57 @@
-import { getNumberFromSeed, getNextSeed } from '../src/math.js'
-import { playGame } from '../src/index.js'
+import { getRandomInteger } from '../src/math.js'
+import playGame from '../src/index.js'
 
-export const getCalcNumbers = (seed, maxNum) => {
-  const numbers = []
-  const seed2 = getNextSeed(seed)
-  const seed3 = getNextSeed(seed2)
-  let number3 = getNumberFromSeed (seed3, 3)
-  if (number3 === 3) number3 = 2
-  numbers.push(getNumberFromSeed (seed, maxNum), getNumberFromSeed (seed2, maxNum), number3)
-  return numbers
-}
-
-export const getAnswerCalc = (seed, maxNum) => {
-  const numbers = getCalcNumbers(seed, maxNum)
-  let answer = null
-
-  switch (numbers[2]) {
-    case 0:
-      answer = numbers[0] + numbers[1]
-      break
-    case 1:
-      answer = numbers[0] - numbers[1]
-      break
-    case 2:
-      answer = numbers[0] * numbers[1]
-      break
+const getRoundCalc = () => {
+  const minNum = gameCalcType.minNum
+  const maxNum = gameCalcType.maxNum
+  const round = {
+    answer: 'Not generated',
+    question: 'Not generated',
+    input: 'Not provided',
+    win: false,
+  }
+  const numbers = {
+    first: null,
+    second: null,
+    operation: null,
   }
 
-  return answer.toString()
-}
+  numbers.first = getRandomInteger(minNum, maxNum)
+  numbers.second = getRandomInteger(minNum, maxNum)
+  numbers.operation = getRandomInteger(0, 2)
 
-export const getQuestionCalc = (seed, maxNum) => {
-  const numbers = getCalcNumbers(seed, maxNum)
-  let question = 'Error: invalid operation index.'
-  switch (numbers[2]) {
+  switch (numbers.operation) {
     case 0:
-      question = `${numbers[0]} + ${numbers[1]}`
+      round.answer = numbers.first + numbers.second
+      round.question = `${numbers.first} + ${numbers.second}`
       break
     case 1:
-      question = `${numbers[0]} - ${numbers[1]}`
+      round.answer = numbers.first - numbers.second
+      round.question = `${numbers.first} - ${numbers.second}`
       break
     case 2:
-      question = `${numbers[0]} * ${numbers[1]}`
+      round.answer = numbers.first * numbers.second
+      round.question = `${numbers.first} * ${numbers.second}`
       break
+    default:
+      round.answer = `Error, operation index is incorrect. Index: ${numbers.operation}`
+      round.question = `Error, operation index is incorrect. Index: ${numbers.operation}`
   }
-  return question
+
+  round.answer = round.answer.toString()
+
+  return round
 }
-export const gameCalcType = {
+
+const gameCalcType = {
+  minNum: 1,
   maxNum: 100,
-  answerFunc: getAnswerCalc,
-  questionFunc: getQuestionCalc,
+  roundFunc: getRoundCalc,
   message: 'What is the result of the expression?',
 }
 
-export const playGameCalc = () => {
+const playGameCalc = () => {
   playGame(gameCalcType)
 }
+
+export default playGameCalc

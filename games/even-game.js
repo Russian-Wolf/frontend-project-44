@@ -1,25 +1,29 @@
-import { isEven, getNumberFromSeed } from '../src/math.js'
-import { playGame } from '../src/index.js'
+import { isEven, getRandomInteger } from '../src/math.js'
+import playGame from '../src/index.js'
 
-export const getAnswerEven = (seed, maxNum) => {
-  const number = getNumberFromSeed (seed, maxNum)
+const getRoundEven = () => {
+  const round = {
+    answer: 'Not generated',
+    question: 'Not generated',
+    input: 'Not provided',
+    win: false,
+  }
+  const number = getRandomInteger(gameEvenType.minNum, gameEvenType.maxNum)
   const evenState = isEven(number)
-  const result = evenState ? 'yes' : 'no'
-  return result
+  round.answer = evenState ? 'yes' : 'no'
+  round.question = number
+  return round
 }
 
-export const getQuestionEven = (seed, maxNum) => {
-  const question = getNumberFromSeed (seed, maxNum)
-  return question
-}
-
-export const gameEvenType = {
-  maxNum: 1000,
-  answerFunc: getAnswerEven,
-  questionFunc: getQuestionEven,
+const gameEvenType = {
+  minNum: 1,
+  maxNum: 999,
+  roundFunc: getRoundEven,
   message: 'Answer "yes" if the number is even, otherwise answer "no".',
 }
 
-export const playGameEven = () => {
+const playGameEven = () => {
   playGame(gameEvenType)
 }
+
+export default playGameEven
